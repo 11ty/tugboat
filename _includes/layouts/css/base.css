@@ -34,11 +34,14 @@ body {
 html {
 	overflow-y: scroll;
 }
-
+main,
+footer {
+	margin: 0 auto;
+	max-width: 60em;
+}
 :is(h1, h2, h3, h4):first-child {
 	margin-top: 0;
 }
-
 button {
 	font-family: inherit;
 }

@@ -23,14 +23,10 @@
 			<div>
 				<header>
 					<a href="/" @text="metadata.title"></a>
-
-					<nav>
-						<visually-hidden><h2>Top level navigation menu</h2></visually-hidden>
-						<ul>
-							<li><a href="/" :aria-current="page.url === '/' ? 'page' : false">Home</a></li>
-						</ul>
-					</nav>
+					<page-navigation></page-navigation>
 				</header>
+
+				<br>
 
 				<table-of-contents></table-of-contents>
 			</div>
@@ -40,7 +36,7 @@
 
 				<page-layout-footer>
 					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
-					<a :href="metadata.repository + page.inputPath.slice(1)">Edit this page</a>
+					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
 				</page-layout-footer>
 			</div>
 		</page-layout-sidebar>

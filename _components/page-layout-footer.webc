@@ -2,6 +2,9 @@
 :host {
 	display: flex;
 	gap: 1em;
-	margin: 1em 0;
+	margin: 1em auto;
 }
 </style>
+<footer webc:root="override">
+	<slot></slot>
+</footer>

@@ -1,11 +1,17 @@
 <style webc:scoped>
 :host {
 	--theme-demo-bg: #ddd;
+	--theme-demo-fg: #333;
 	display: block;
 	border: 2px solid var(--theme-demo-bg);
 	border-radius: .5em;
 	margin-bottom: 1em;
 	overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+	:host {
+		--theme-demo-bg: lightblue;
+	}
 }
 :host > .content {
 	padding: 1rem;
@@ -25,6 +31,7 @@
 :host > .source pre {
 	margin: 0;
 	border-radius: 0;
+	border-top: 2px solid var(--theme-demo-bg);
 }
 :host > .source-wrap pre,
 :host > .source-wrap code {
@@ -32,20 +39,34 @@
 	word-wrap: break-word;
 }
 :host > .source summary {
-	background-color: #f2f2f2;
 	text-transform: none;
 	width: min-content;
 	white-space: nowrap;
 	font-size: 0.8125em; /* 13px /16 */
 	border-top-right-radius: .3em;
+	padding-bottom: .5em;
 }
 :host > .source[open] summary {
-	background-color: #333;
-	color: #fff;
+	background-color: var(--theme-demo-bg);
+	color: var(--theme-demo-fg);
 }
+/* @media (prefers-color-scheme: dark) {
+	:host > .source summary,
+	:host > .source[open] summary {
+		background-color: var(--theme-demo-bg);
+		color: #000;
+	}
+} */
 :host:not(:has(is-land)),
 :host:has(is-land[ready]) {
-	--theme-demo-bg: darkgreen;
+	--theme-demo-bg: lightblue;
+	--theme-demo-fg: #222;
+}
+@media (prefers-color-scheme: dark) {
+	:host:not(:has(is-land)),
+	:host:has(is-land[ready]) {
+		--theme-demo-bg: #aaaaf5;
+	}
 }
 </style>
 <!--- Unscoped CSS --->

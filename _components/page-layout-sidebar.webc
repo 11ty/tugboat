@@ -17,6 +17,12 @@
 		max-height: 100vh;
 		overflow: auto;
 	}
+	@media (prefers-color-scheme: dark) {
+		:host > :first-child {
+			border-color: #333;
+			background-color: #212931;
+		}
+	}
 	:host > :last-child {
 		flex-grow: 1;
 		overflow: hidden;

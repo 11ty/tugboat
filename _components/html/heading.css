@@ -9,3 +9,13 @@
 .heading-link[href]:visited {
 	color: #777;
 }
+
+@media (prefers-color-scheme: dark) {
+	.heading-link {
+		background-color: transparent;
+	}
+	.heading-link[href],
+	.heading-link[href]:visited {
+		color: #999;
+	}
+}

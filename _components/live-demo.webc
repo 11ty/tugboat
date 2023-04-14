@@ -51,7 +51,7 @@
 <style>
 is-land:not(:defined) .demo-predefined-only,
 is-land[ready] .demo-predefined-only {
-	display: none;
+	visibility: hidden;
 }
 </style>
 <div class="content">

@@ -12,8 +12,8 @@ code {
 		background-color: #111;
 	}
 }
-</style>
-<script webc:type="js" webc:root webc:raw>
+</style><!---
+---><script webc:type="js" webc:root webc:raw>
 let txt = slots.text.default;
 if(safe || safe === "") {
 	txt;

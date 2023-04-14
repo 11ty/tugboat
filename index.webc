@@ -12,7 +12,7 @@ let layout = "layouts/base.webc";
 <ul>
 	<li><accessible-emoji emoji="🗣"></accessible-emoji> <code>visually-hidden</code> to hide content but keep it <a href="https://www.a11yproject.com/posts/how-to-hide-content/">accessible to screen readers</a>.</li>
 	<li><accessible-emoji emoji="💾"></accessible-emoji> <code>pre</code> for syntax highlighting using <a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/"><code>@11ty/eleventy-plugin-syntaxhighlight</code></a>.</li>
-	<li><accessible-emoji emoji="🖼"></accessible-emoji> <code>eleventy-image</code> for super easy and fast build-time image optimization using <a href="https://www.11ty.dev/docs/plugins/image/"><code>@11ty/eleventy-img</code></a>.</li>
+	<li><accessible-emoji emoji="🖼"></accessible-emoji> <code>eleventy-image</code> for easy, pre-configured, fast build-time image optimization using <a href="https://www.11ty.dev/docs/plugins/image/"><code>@11ty/eleventy-img</code></a>.</li>
 	<li><accessible-emoji emoji="🏝"></accessible-emoji> <code>is-land</code> <em>(client-JavaScript)</em> to use Islands architecture to control how components load and initialize (using <a href="https://www.11ty.dev/docs/plugins/partial-hydration/"><code>@11ty/is-land</code></a>)</li>
 	<li><accessible-emoji emoji="⏲"></accessible-emoji> <code>time-difference</code> <em>(client-JavaScript)</em> to show human readable time differences for visitor-localized time zones.</li>
 	<li><accessible-emoji emoji="🎭"></accessible-emoji> <code>accessible-emoji</code> to show screen-reader friendly emoji.</li>
@@ -20,7 +20,7 @@ let layout = "layouts/base.webc";
 
 <h2>Demos</h2>
 
-<h3>Islands architecture</h3>
+<h3>Islands Architecture</h3>
 
 <p>This island initializes a <code>time-difference</code> web component when the island is visible:</p>
 
@@ -46,9 +46,9 @@ let layout = "layouts/base.webc";
 </p>
 </live-demo>
 
-<h3>Image optimization</h3>
+<h3>Image Optimization</h3>
 
-<p>In this demo a very large <code>1600×1200</code> source image is automatically downscaled to <code>400w</code> and <code>800w</code> output sizes in three separate image formats <code>webp</code> and <code>jpeg</code>. The image component includes the <code>width</code> and <code>height</code> attributes to eliminate <a href="https://web.dev/cls/">Content Layout Shift</a> and decides whether the <code>picture</code> syntax is necessary and generates optimal markup using <code>srcset</code>.</p>
+<p>A very large <code>1600×1200</code> source image has been downscaled to <code>400w</code> and <code>800w</code> output sizes in three separate image formats (<code>avif</code>, <code>webp</code>, and <code>jpeg</code>). The image component includes the <code>width</code> and <code>height</code> attributes to eliminate <a href="https://web.dev/cls/">Content Layout Shift</a> and decides whether the <code>picture</code> syntax is necessary and generates optimal markup using <code>srcset</code>.</p>
 
 <live-demo @wrap>
 <img webc:is="eleventy-image" width="400,800" sizes="100vw" src="img/sung-jin-cho-5dgq-7DySyE-unsplash.jpg" formats="avif,webp,jpeg" alt="A photo of a small blue and white tugboat next to a very large shipping container ship full of multi-colored shipping containers.">

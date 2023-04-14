@@ -32,16 +32,7 @@
 					</nav>
 				</header>
 
-				<details open>
-					<summary>On this page</summary>
-					<aside>
-						<nav>
-							<ol>
-								<li><a href="#">Test</a></li>
-							</ol>
-						</nav>
-					</aside>
-				</details>
+				<table-of-contents></table-of-contents>
 			</div>
 			<!--- not the sidebar --->
 			<div>
@@ -49,7 +40,7 @@
 
 				<page-layout-footer>
 					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
-					<a href="#">Edit this page</a>
+					<a :href="metadata.repository + page.inputPath.slice(1)">Edit this page</a>
 				</page-layout-footer>
 			</div>
 		</page-layout-sidebar>

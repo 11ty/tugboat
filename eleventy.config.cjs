@@ -32,6 +32,8 @@ module.exports = function(eleventyConfig) {
 		}
 	});
 
+	eleventyConfig.addWatchTarget("./_components/**/*.css");
+
 	eleventyConfig.setServerOptions({
 		domDiff: false
 	});

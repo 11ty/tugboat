@@ -36,7 +36,8 @@
 	text-transform: none;
 	width: min-content;
 	white-space: nowrap;
-	border-top-right-radius: .25em;
+	font-size: 0.8125em; /* 13px /16 */
+	border-top-right-radius: .3em;
 }
 :host > .source[open] summary {
 	background-color: #333;

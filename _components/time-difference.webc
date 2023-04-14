@@ -1,0 +1,115 @@
+<!---
+time-difference shows the relative time difference between a date and now.
+
+@param {string} date
+@param {string} locale
+@param {("year"|"quarter"|"month"|"week"|"day"|"hour"|"minute"|"second")} units
+@param {boolean} live
+@param {integer} interval (in seconds)
+--->
+
+<time :datetime="date" :title="date" @text="date"></time>
+
+<style webc:scoped>
+:host {
+	font-variant-numeric: tabular-nums;
+}
+</style>
+
+<script>
+class TimeDifference extends HTMLElement {
+	// Order of these keys in important
+	static UNITS = {
+		second:  1,
+		minute:  60,
+		hour:    60 * 60,
+		day:     60 * 60 * 24,
+		week:    60 * 60 * 24 * 7,
+		// quarter: 60 * 60 * 24 * 365 / 4,
+		year:    60 * 60 * 24 * 365,
+	};
+
+	get time() {
+		return this.querySelector("time");
+	}
+
+	get units() {
+		return this.getAttribute("units");
+	}
+
+	get live() {
+		return this.hasAttribute("live");
+	}
+
+	get interval() {
+		// numeric override (seconds)
+		let attr = this.getAttribute("interval");
+		if(attr) {
+			return parseInt(attr, 10) * 1000;
+		}
+
+		// use units if specified
+		if(this.units) {
+			return TimeDifference.UNITS[this.units] * 1000;
+		}
+
+		// default: 1 minute
+		return TimeDifference.UNITS.minute * 1000;
+	}
+
+	static getUnits(date1, date2) {
+		let diff = Math.abs(date1 - date2) / 1000;
+		for(let unit in TimeDifference.UNITS) {
+			if(diff < TimeDifference.UNITS[unit]) {
+				return unit;
+			}
+		}
+
+		// default to largest
+		return "year";
+	}
+
+	static getDivisor(units) {
+		return (TimeDifference.UNITS[units] || 1) * 1000;
+	}
+
+	static getText(dateStr, units, locale) {
+		let date1 = Date.parse(dateStr);
+		let date2 = Date.now();
+		if(!date1 || !date2) {
+			return;
+		}
+
+		units = units || this.getUnits(date1, date2);
+
+		let rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+		let divisor = TimeDifference.getDivisor(units);
+		let diff = Math.floor((date1 - date2) / divisor);
+
+		return rtf.format(diff, units);
+	}
+
+	update() {
+		let dateStr = this.time.getAttribute("datetime");
+		if(!dateStr) {
+			// For Shadow DOM method, using a global <template>
+			dateStr = this.getAttribute("date");
+		}
+
+		let locale = this.getAttribute("locale") || "en";
+		this.time.innerText = TimeDifference.getText(dateStr, this.units, locale);
+	}
+
+	connectedCallback() {
+		this.update();
+
+		if(this.live) {
+			setInterval(this.update.bind(this), this.interval);
+		}
+	}
+}
+
+if(("customElements" in window) && Date.parse && ("Intl" in window) && Intl.RelativeTimeFormat) {
+	window.customElements.define("time-difference", TimeDifference);
+}
+</script>

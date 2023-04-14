@@ -1,0 +1,65 @@
+<style webc:scoped>
+:host {
+	--theme-demo-bg: #ddd;
+	display: block;
+	border: 2px solid var(--theme-demo-bg);
+	border-radius: .5em;
+	margin-bottom: 1em;
+	overflow: hidden;
+}
+:host > .content {
+	padding: 1rem;
+}
+:host > .content > p:first-child {
+	margin-top: 0;
+}
+:host > .content > p:last-child {
+	margin-bottom: 0;
+}
+:host .hed {
+	padding: .4em 1rem;
+	margin: 0;
+	font-size: 0.875em; /* 14px /16 */
+	text-transform: uppercase;
+}
+:host > .source pre {
+	margin: 0;
+	border-radius: 0;
+}
+:host > .source-wrap pre,
+:host > .source-wrap code {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+:host > .source summary {
+	background-color: #f2f2f2;
+	text-transform: none;
+	width: min-content;
+	white-space: nowrap;
+	border-top-right-radius: .25em;
+}
+:host > .source[open] summary {
+	background-color: #333;
+	color: #fff;
+}
+:host:not(:has(is-land)),
+:host:has(is-land[ready]) {
+	--theme-demo-bg: darkgreen;
+}
+</style>
+<!--- Unscoped CSS --->
+<style>
+is-land:not(:defined) .demo-predefined-only,
+is-land[ready] .demo-predefined-only {
+	display: none;
+}
+</style>
+<div class="content">
+	<slot></slot>
+</div>
+<details class="source" :class="wrap === '' ? 'source-wrap' : ''">
+	<summary class="hed">View Source (WebC)</summary>
+	<script webc:type="js">
+	`<pre @language="html" @content="${webc.escapeAttribute(slots.text.default)}"></pre>`
+	</script>
+</details>

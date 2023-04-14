@@ -1,0 +1,23 @@
+<style>
+code {
+	background-color: #eee;
+	border-radius: .25em;
+	padding-left: .25em;
+	padding-right: .25em;
+	font-family: Roboto Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+	code {
+		background-color: #111;
+	}
+}
+</style>
+<script webc:type="js" webc:root webc:raw>
+let txt = slots.text.default;
+if(safe || safe === "") {
+	txt;
+} else {
+	webc.escapeText(txt);
+}
+</script>

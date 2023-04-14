@@ -1,0 +1,61 @@
+<!doctype html>
+<html :lang="metadata.language">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title @text="title || metadata.title"></title>
+		<meta name="description" :content="description || metadata.description">
+
+		<!--- Uncomment this if you’d like folks to know that you used Eleventy to build your site! --->
+		<!--- <meta name="generator" :content="eleventy.generator"> --->
+
+		<link rel="stylesheet" href="css/base.css">
+
+		<style webc:keep @raw="getBundle('css')"></style>
+	</head>
+	<body>
+		<visually-hidden>
+			<a href="#skip">Skip to main content</a>
+		</visually-hidden>
+
+		<page-layout-sidebar>
+			<!--- sidebar --->
+			<div>
+				<header>
+					<a href="/" @text="metadata.title"></a>
+
+					<nav>
+						<visually-hidden><h2>Top level navigation menu</h2></visually-hidden>
+						<ul>
+							<li><a href="/" :aria-current="page.url === '/' ? 'page' : false">Home</a></li>
+						</ul>
+					</nav>
+				</header>
+
+				<details open>
+					<summary>On this page</summary>
+					<aside>
+						<nav>
+							<ol>
+								<li><a href="#">Test</a></li>
+							</ol>
+						</nav>
+					</aside>
+				</details>
+			</div>
+			<!--- not the sidebar --->
+			<div>
+				<main id="skip" @raw="content"></main>
+
+				<page-layout-footer>
+					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
+					<a href="#">Edit this page</a>
+				</page-layout-footer>
+			</div>
+		</page-layout-sidebar>
+
+		<script webc:type="js">`<!-- Build timestamp: ${Date.now()} -->`</script>
+
+		<script type="module" webc:keep @raw="getBundle('js')"></script>
+	</body>
+</html>

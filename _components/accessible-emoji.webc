@@ -1,0 +1,8 @@
+<script webc:root="override" webc:type="js" webc:raw>
+let label = emojiShortName(emoji);
+// via
+// https://kittygiraudel.com/2021/01/02/accessible-emojis-with-11ty/
+// https://tink.uk/accessible-emoji/
+// https://adrianroselli.com/2016/12/accessible-emoji-tweaked.html
+`<span role="img" aria-label="${label}">${emoji}</span>`
+</script>

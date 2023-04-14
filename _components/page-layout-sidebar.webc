@@ -1,0 +1,25 @@
+<style webc:scoped>
+:host > * {
+	padding: 1rem;
+}
+@media (min-width: 43.75em) { /* 700px */
+	:host {
+		display: flex;
+		gap: 1rem;
+		min-height: 100vh;
+	}
+	:host > :first-child {
+		border-right: 0.125em solid #ddd; /* 2px /16 */
+		background-color: #f9f9f9;
+		min-width: 15em;
+		position: sticky;
+		top: 0;
+		max-height: 100vh;
+		overflow: auto;
+	}
+	:host > :last-child {
+		flex-grow: 1;
+		overflow: hidden;
+	}
+}
+</style>

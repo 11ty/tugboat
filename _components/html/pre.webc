@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="../../node_modules/prismjs/themes/prism-tomorrow.css">
+<style>
+pre:only-child {
+	margin: 0;
+}
+pre {
+	--pre-tabsize: 2;
+	display: block;
+	width: 100%;
+	font-family: Roboto Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+	overflow-x: auto;
+}
+pre,
+code[class*="language-"] {
+	-moz-tab-size: var(--pre-tabsize);
+	-o-tab-size: var(--pre-tabsize);
+	tab-size: var(--pre-tabsize);
+}
+pre[class*="language-"] {
+	border-radius: .4em;
+	background-color: rgba(0,0,0,.9);
+	max-width: 100%;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+	overflow: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+	pre[class*="language-"] {
+		background-color: inherit;
+	}
+}
+</style>
+<script webc:type="js" webc:root="override" webc:raw>
+if(!content) {
+	content = slots.text.default.trim() || "";
+}
+if(!language) {
+	`<pre${webc.renderAttributes(webc.attributes)}>${webc.escapeText(content)}</pre>`;
+} else {
+	// Uses the `highlight` global shortcode from @11ty/eleventy-plugin-syntaxhighlight
+	helpers.highlight(language, content);
+}
+</script>

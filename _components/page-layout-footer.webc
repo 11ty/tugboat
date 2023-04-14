@@ -1,0 +1,7 @@
+<style webc:scoped>
+:host {
+	display: flex;
+	gap: 1em;
+	margin: 1em 0;
+}
+</style>

@@ -1,14 +1,17 @@
 <style>
 code {
 	background-color: #eee;
+	color: var(--text-color);
 	border-radius: .25em;
 	padding-left: .25em;
 	padding-right: .25em;
 	font-family: Roboto Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 }
-
+.theme-dark code {
+	background-color: #111;
+}
 @media (prefers-color-scheme: dark) {
-	code {
+	:root:not(.theme-light) code {
 		background-color: #111;
 	}
 }

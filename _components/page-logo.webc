@@ -1,0 +1,15 @@
+<style webc:scoped>
+:host {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 1.375em; /* 22px /16 */
+}
+:host a {
+	text-decoration: none;
+}
+</style>
+<a href="/">
+	<slot></slot>
+	<accessible-emoji emoji="🌊"></accessible-emoji>
+</a>

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="heading.css">
-<script webc:type="js" webc:root>
+<script webc:type="js" webc:root="override">
 let slug = slugify(slots.text.default);
 `<h4 id="${slug}">
 	${slots.text.default}

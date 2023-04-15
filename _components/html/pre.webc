@@ -9,6 +9,7 @@ pre {
 	width: 100%;
 	font-family: Roboto Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 	overflow-x: auto;
+	line-height: 1.5;
 }
 pre,
 code[class*="language-"] {
@@ -25,9 +26,11 @@ code[class*="language-"],
 pre[class*="language-"] {
 	overflow: auto;
 }
-
+.theme-dark code[class*="language-"] {
+	background-color: inherit;
+}
 @media (prefers-color-scheme: dark) {
-	pre[class*="language-"] {
+	:root:not(.theme-light) code[class*="language-"] {
 		background-color: inherit;
 	}
 }

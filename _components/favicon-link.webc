@@ -1,0 +1,27 @@
+<style webc:scoped>
+:host {
+	--people-card-spacing: .25em;
+	display: inline-flex;
+	gap: .75em;
+	align-items: center;
+	text-decoration: none;
+	border: 2px solid;
+	padding: var(--people-card-spacing);
+	padding-right: 1em;
+	border-radius: .5em;
+	font-weight: 700;
+	border-radius: 55px;
+}
+:host:hover,
+:host:active {
+	background-color: rgba(0,0,0,.04);
+}
+:host img {
+	border-radius: 50%;
+	max-width: 2em;
+}
+</style>
+<a webc:root="override">
+	<img :alt="`Favicon for ${href}`" loading="lazy" decoding="async" :src="`https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(href)}/`" width="60" height="60">
+	<slot></slot>
+</a>

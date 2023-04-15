@@ -1,7 +1,13 @@
 <style webc:scoped>
+:host {
+	--page-layout-sidebar-bg: rgba(0,0,0,0.04);
+	--page-layout-sidebar-border: rgba(0,0,0,0.15);
+}
+
 :host > * {
 	padding: 1rem;
 }
+
 @media (min-width: 43.75em) { /* 700px */
 	:host {
 		display: flex;
@@ -9,19 +15,17 @@
 		min-height: 100vh;
 	}
 	:host > :first-child {
-		border-right: 0.125em solid #ddd; /* 2px /16 */
-		background-color: #f9f9f9;
+		border-right: 1px solid var(--page-layout-sidebar-border);
+		background-color: var(--page-layout-sidebar-bg);
+		color: var(--text-color);
 		min-width: 15em;
 		position: sticky;
 		top: 0;
 		max-height: 100vh;
 		overflow: auto;
 	}
-	@media (prefers-color-scheme: dark) {
-		:host > :first-child {
-			border-color: #333;
-			background-color: #212931;
-		}
+	:host > :first-child > * {
+		margin-bottom: 3em;
 	}
 	:host > :last-child {
 		flex-grow: 1;

@@ -1,8 +1,8 @@
 <style webc:scoped>
 :host {
 	display: flex;
-	gap: 1em;
-	margin: 1em auto;
+	flex-direction: column;
+	gap: .5em;
 }
 </style>
 <footer webc:root="override">

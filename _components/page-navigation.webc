@@ -5,7 +5,9 @@
 }
 </style>
 <nav>
-	<visually-hidden><h2>Top level navigation menu</h2></visually-hidden>
+	<!-- <visually-hidden>
+		<h2>Top level navigation menu</h2>
+	</visually-hidden> -->
 	<ul>
 		<li><a href="/" :aria-current="$data.page.url === '/' ? 'page' : false">Home</a></li>
 	</ul>

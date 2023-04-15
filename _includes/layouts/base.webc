@@ -9,8 +9,9 @@
 		<!--- Uncomment this if you’d like folks to know that you used Eleventy to build your site! --->
 		<!--- <meta name="generator" :content="eleventy.generator"> --->
 
-		<link rel="stylesheet" href="css/base.css">
+		<script webc:keep @raw="getBundle('js', 'head')"></script>
 
+		<link rel="stylesheet" href="css/base.css">
 		<style webc:keep @raw="getBundle('css')"></style>
 	</head>
 	<body>
@@ -22,22 +23,21 @@
 			<!--- sidebar --->
 			<div>
 				<header>
-					<a href="/" @text="metadata.title"></a>
+					<page-logo @text="metadata.title"></page-logo>
 					<page-navigation></page-navigation>
 				</header>
 
-				<br>
-
 				<table-of-contents></table-of-contents>
+
+				<page-layout-footer>
+					<color-schemer></color-schemer>
+					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
+					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
+				</page-layout-footer>
 			</div>
 			<!--- not the sidebar --->
 			<div>
 				<main id="skip" @raw="content"></main>
-
-				<page-layout-footer>
-					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
-					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
-				</page-layout-footer>
 			</div>
 		</page-layout-sidebar>
 

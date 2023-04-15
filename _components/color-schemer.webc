@@ -1,0 +1,52 @@
+<style webc:scoped>
+:host select {
+	padding: .25em;
+}
+</style>
+<script webc:bucket="head">
+let theme = sessionStorage.getItem("theme");
+if(theme) {
+	document.documentElement.classList.add(`theme-${theme}`);
+}
+</script>
+<form>
+	<label>
+		<select disabled>
+			<option value="" selected>Auto</option>
+			<option value="dark">Dark</option>
+			<option value="light">Light</option>
+		</select> Theme
+	</label>
+</form>
+<script>
+class ColorSchemer extends HTMLElement {
+	connectedCallback() {
+		this.select = this.querySelector("select");
+		if(this.select) {
+			this.select.removeAttribute("disabled");
+
+			let saved = sessionStorage.getItem("theme");
+			if(saved) {
+				this.select.value = saved;
+			}
+
+			this.select.addEventListener("input", function() {
+				let el = document.documentElement;
+				let theme = this.value;
+				el.classList.remove("theme-dark", "theme-light");
+
+				if(theme) {
+					el.classList.add(`theme-${theme}`);
+					sessionStorage.setItem("theme", theme);
+				} else {
+					sessionStorage.removeItem("theme");
+				}
+			})
+		}
+	}
+}
+
+if(("customElements" in window)) {
+	window.customElements.define("color-schemer", ColorSchemer);
+}
+</script>

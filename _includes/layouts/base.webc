@@ -28,14 +28,13 @@
 				</header>
 
 				<table-of-contents></table-of-contents>
-
-				<color-schemer></color-schemer>
 			</div>
 			<!--- not the sidebar --->
 			<div>
 				<main id="skip" @raw="content"></main>
 
 				<page-layout-footer>
+					<color-schemer></color-schemer>
 					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
 					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
 				</page-layout-footer>

@@ -1,6 +1,9 @@
 <style webc:scoped>
 :host select {
 	padding: .25em;
+	border-width: 2px;
+	border-radius: .25em;
+	border-color: rgba(0,0,0,.3);
 }
 :host select[disabled] {
 	cursor: not-allowed;
@@ -15,10 +18,10 @@ if(theme) {
 <form>
 	<label>
 		<select disabled>
-			<option value="" selected>Auto</option>
-			<option value="dark">Dark</option>
-			<option value="light">Light</option>
-		</select> Theme
+			<option value="" selected>System</option>
+			<option value="dark">Dark Theme</option>
+			<option value="light">Light Theme</option>
+		</select>
 	</label>
 </form>
 <script>

@@ -1,6 +1,5 @@
 <!---
 table-of-contents finds the anchor links in the content to create a table of contents
-
 --->
 <style webc:scoped>
 :host {

@@ -2,6 +2,9 @@
 :host select {
 	padding: .25em;
 }
+:host select[disabled] {
+	cursor: not-allowed;
+}
 </style>
 <script webc:bucket="head">
 let theme = sessionStorage.getItem("theme");

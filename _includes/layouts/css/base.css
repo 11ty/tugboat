@@ -5,7 +5,7 @@
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050F;
-	color-scheme: dark light;
+	color-scheme: light;
 }
 
 /* TODO use a tool to generate these to prevent author-time code duplication */
@@ -15,7 +15,7 @@
 	--text-color-link: #1493fb;
 	--text-color-link-active: #6969f7;
 	--text-color-link-visited: #a6a6f8;
-	color-scheme: dark light;
+	color-scheme: dark;
 }
 /* System wants dark, make sure sure light mode is not selected */
 @media (prefers-color-scheme: dark) {
@@ -25,7 +25,7 @@
 		--text-color-link: #1493fb;
 		--text-color-link-active: #6969f7;
 		--text-color-link-visited: #a6a6f8;
-		color-scheme: dark light;
+		color-scheme: dark;
 	}
 }
 

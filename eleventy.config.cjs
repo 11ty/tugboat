@@ -2,6 +2,7 @@ const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { eleventyImagePlugin } = require("@11ty/eleventy-img");
 const emojiShortName = require("emoji-short-name");
+const {parseHTML} = require("linkedom");
 
 const pluginJavaScriptFrontMatter = require("./_config/javascriptFrontMatter.cjs");
 
@@ -41,4 +42,9 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addJavaScriptFunction("emojiShortName", (emoji) => {
 		return emojiShortName[emoji];
 	})
+
+	eleventyConfig.addJavaScriptFunction("selectFromHtml", (html, selector) => {
+		const { document } = parseHTML(html);
+		return document.querySelectorAll(selector);
+	});
 };

@@ -27,7 +27,7 @@
 					<page-navigation></page-navigation>
 				</header>
 
-				<table-of-contents></table-of-contents>
+				<table-of-contents :@content="content"></table-of-contents>
 			</div>
 			<!--- not the sidebar --->
 			<div>

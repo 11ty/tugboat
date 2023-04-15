@@ -1,6 +1,38 @@
 <!---
 table-of-contents finds the anchor links in the content to create a table of contents
 --->
+<script webc:setup>
+function getLevel(el) {
+	return parseInt(el.tagName.slice(1), 10);
+}
+function generateHtml(headings) {
+	let html = [];
+	let previousLevel = 2;
+	for(let el of headings) {
+		let level = getLevel(el);
+		if(level === previousLevel) {
+			html.push("</li>");
+		} else if(level < previousLevel) {
+			html.push("</ul>")
+		} else if(level > previousLevel) {
+			html.push("<ul>")
+		}
+
+		let text = Array.from(el.childNodes).map(node => {
+			if(node.nodeType === 3) {
+				return node.nodeValue.trim();
+			}
+			return "";
+		}).join("");
+		html.push(`<li><a href="#${el.getAttribute("id")}">${text}</a>`);
+		previousLevel = level;
+	}
+	return `<details open>
+	<summary>On this page</summary>
+	<ul>${html.join("")}</ul>
+</details>`;
+}
+</script>
 <style webc:scoped>
 :host {
 	display: block;
@@ -21,48 +53,7 @@ table-of-contents finds the anchor links in the content to create a table of con
 	display: block;
 }
 </style>
-<script>
-class TableOfContents extends HTMLElement {
-	getLevel(el) {
-		return parseInt(el.tagName.slice(1), 10);
-	}
-
-	generateHtml() {
-		let main = document.getElementsByTagName("main")[0];
-		let headings = main.querySelectorAll(":is(h2, h3, h4, h5, h6)[id]");
-		let html = [];
-		let previousLevel = 2;
-		for(let el of headings) {
-			let level = this.getLevel(el);
-			if(level === previousLevel) {
-				html.push("</li>");
-			} else if(level < previousLevel) {
-				html.push("</ul>")
-			} else if(level > previousLevel) {
-				html.push("<ul>")
-			}
-
-			let text = Array.from(el.childNodes).map(node => {
-				if(node.nodeType === 3) {
-					return node.nodeValue.trim();
-				}
-				return "";
-			}).join("");
-			html.push(`<li><a href="#${el.getAttribute("id")}">${text}</a>`);
-			previousLevel = level;
-		}
-		return `<details open>
-	<summary>On this page</summary>
-	<ul>${html.join("")}</ul>
-</details>`;
-	}
-
-	connectedCallback() {
-		this.innerHTML = this.generateHtml();
-	}
-}
-
-if(("customElements" in window)) {
-	window.customElements.define("table-of-contents", TableOfContents);
-}
+<script webc:type="js">
+let headings = selectFromHtml(content, ":is(h2, h3, h4, h5, h6)[id]" );
+generateHtml(headings);
 </script>

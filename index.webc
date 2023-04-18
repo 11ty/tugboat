@@ -32,6 +32,23 @@ let layout = "layouts/base.webc";
 <a webc:is="favicon-link" href="https://jennschiffer.com/">Jenn Schiffer</a>
 </live-demo>
 
+<h3>Time Difference</h3>
+
+<p>The <code>time-difference</code> component shows the difference between a date/time and now in the user’s local time zone.</p>
+
+<live-demo>
+	<p>
+		Time between April 7th, 2023 and now:
+		<time-difference date="2023-04-07" live></time-difference> or
+		<time-difference date="2023-04-07" units="second" live></time-difference>
+	</p>
+	<p>
+		Time between April 7th, 2024 and now:
+		<time-difference date="2024-04-07" live></time-difference> or
+		<time-difference date="2024-04-07" units="second" live></time-difference>
+	</p>
+</live-demo>
+
 <h3>Islands Architecture</h3>
 
 <p>This island initializes a <code>time-difference</code> web component when the island is visible:</p>

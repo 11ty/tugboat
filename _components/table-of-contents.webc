@@ -52,8 +52,53 @@ function generateHtml(headings) {
 :host a {
 	display: block;
 }
+:host .active {
+	font-weight: bold;
+}
 </style>
 <script webc:type="js">
+// selectFromHtml via linkedom in eleventy.config.cjs
 let headings = selectFromHtml(content, ":is(h2, h3, h4, h5, h6)[id]" );
 generateHtml(headings);
 </script>
+
+<script>
+	class TableOfContents extends HTMLElement {
+		static ACTIVE = "active";
+
+		observe(targetsSelector) {
+			let observer = new IntersectionObserver((entries) => {
+				for (let entry of entries) {
+					if(entry.isIntersecting) {
+						let id = entry.target.getAttribute("id");
+						let tocHeading = this.querySelector(`a[href="#${id}"]`);
+						if(tocHeading) {
+							let previousHeading = this.querySelector(`.${TableOfContents.ACTIVE}`);
+							if(previousHeading) {
+								previousHeading.classList.remove(TableOfContents.ACTIVE);
+							}
+							tocHeading.classList.add(TableOfContents.ACTIVE);
+						}
+						break;
+					}
+				}
+			}, {
+				rootMargin: "0px 0px -35% 0px",
+				threshold: 1,
+			});
+
+			let headings = document.querySelectorAll(targetsSelector);
+			for(let heading of headings) {
+				observer.observe(heading);
+			}
+		}
+
+		connectedCallback() {
+			this.observe(":is(h2, h3, h4, h5, h6)[id]")
+		}
+	}
+
+	if(("customElements" in window)) {
+		window.customElements.define("table-of-contents", TableOfContents);
+	}
+	</script>

@@ -36,7 +36,8 @@
 				<page-layout-footer>
 					<color-schemer></color-schemer>
 					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
-					<span @text="`©${(new Date()).getFullYear()} Eleventy`"></span>
+					<span>Built with <a href="https://www.11ty.dev/">Eleventy</a></span>
+					<span" @text="`©${(new Date()).getFullYear()}`"></span>
 				</page-layout-footer>
 			</div>
 		</page-layout-sidebar>

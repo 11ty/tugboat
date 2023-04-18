@@ -31,7 +31,7 @@
 :host > .source pre {
 	margin: 0;
 	border-radius: 0;
-	border-top: 2px solid var(--theme-demo-bg);
+	box-shadow: 0 0 0 2px var(--theme-demo-bg);
 }
 :host > .source-wrap pre,
 :host > .source-wrap code {
@@ -50,13 +50,6 @@
 	background-color: var(--theme-demo-bg);
 	color: var(--theme-demo-fg);
 }
-/* @media (prefers-color-scheme: dark) {
-	:host > .source summary,
-	:host > .source[open] summary {
-		background-color: var(--theme-demo-bg);
-		color: #000;
-	}
-} */
 :host:not(:has(is-land)),
 :host:has(is-land[ready]) {
 	--theme-demo-bg: lightblue;

@@ -8,6 +8,7 @@
 	border: 2px solid;
 	padding: var(--people-card-spacing);
 	padding-right: 1em;
+	margin-bottom: .2em;
 	border-radius: .5em;
 	font-weight: 700;
 	border-radius: 55px;

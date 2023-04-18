@@ -12,4 +12,5 @@
 <a href="/">
 	<slot></slot>
 	<accessible-emoji emoji="🌊"></accessible-emoji>
+	<accessible-emoji emoji="🚢"></accessible-emoji>
 </a>

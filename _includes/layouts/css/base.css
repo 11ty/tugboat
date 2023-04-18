@@ -52,6 +52,12 @@ footer {
 	margin: 0 auto;
 	max-width: 60em;
 }
+@media (min-width: 48em) {
+	footer {
+		/* Extra padding for intersection observer */
+		margin-bottom: 30vh;
+	}
+}
 :is(h1, h2, h3, h4):first-child {
 	margin-top: 0;
 }

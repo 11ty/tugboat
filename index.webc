@@ -62,7 +62,7 @@ let layout = "layouts/base.webc";
 
 <h3>Islands Architecture</h3>
 
-<p>This island initializes a <code>time-difference</code> web component when the island is visible:</p>
+<p>Use islands architecture to “hydrate” components that use client-side JavaScript when conditions are met. This island initializes a <code>time-difference</code> web component when the island is visible:</p>
 
 <live-demo>
 <p>
@@ -78,7 +78,7 @@ let layout = "layouts/base.webc";
 <p>
 	<is-land on:visible on:interaction>
 		This page was published: <time-difference :@date="Date.now()" live units="minutes"></time-difference>
-		<button class="demo-predefined-only">Activate the Island</button>
+		<button class="demo-predefined-only">Click this button to activate the Island</button>
 	</is-land>
 </p>
 </live-demo>

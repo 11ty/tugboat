@@ -1,14 +1,19 @@
 <!---
 time-difference shows the relative time difference between a date and now.
 
-@param {string} date
+@param {string|integer} parseable date string or timestamp number
 @param {string} locale
-@param {("year"|"quarter"|"month"|"week"|"day"|"hour"|"minute"|"second")} units
+@param {("years"|"quarters"|"months"|"weeks"|"days"|"hours"|"minutes"|"seconds")} units
 @param {boolean} live
 @param {integer} interval (in seconds)
 --->
+<script webc:setup>
+function readableDate(date, locale) {
+	return new Date(date).toLocaleString(locale || "en");
+}
+</script>
 
-<time :datetime="date" :title="date" @text="date"></time>
+<time :datetime="date" :title="readableDate(date)" @text="readableDate(date)"></time>
 
 <style webc:scoped>
 :host {
@@ -20,13 +25,13 @@ time-difference shows the relative time difference between a date and now.
 class TimeDifference extends HTMLElement {
 	// Order of these keys in important
 	static UNITS = {
-		second:  1,
-		minute:  60,
-		hour:    60 * 60,
-		day:     60 * 60 * 24,
-		week:    60 * 60 * 24 * 7,
-		// quarter: 60 * 60 * 24 * 365 / 4,
-		year:    60 * 60 * 24 * 365,
+		seconds:  1,
+		minutes:  60,
+		hours:    60 * 60,
+		days:     60 * 60 * 24,
+		weeks:    60 * 60 * 24 * 7,
+		// quarters: 60 * 60 * 24 * 365 / 4,
+		years:    60 * 60 * 24 * 365,
 	};
 
 	get time() {
@@ -54,7 +59,7 @@ class TimeDifference extends HTMLElement {
 		}
 
 		// default: 1 minute
-		return TimeDifference.UNITS.minute * 1000;
+		return TimeDifference.UNITS.minutes * 1000;
 	}
 
 	static getUnits(date1, date2) {
@@ -66,7 +71,7 @@ class TimeDifference extends HTMLElement {
 		}
 
 		// default to largest
-		return "year";
+		return "years";
 	}
 
 	static getDivisor(units) {
@@ -74,7 +79,13 @@ class TimeDifference extends HTMLElement {
 	}
 
 	static getText(dateStr, units, locale) {
-		let date1 = Date.parse(dateStr);
+		let date1;
+		if(!isNaN(Date.parse(dateStr))) {
+			date1 = Date.parse(dateStr);
+		} else {
+			// Timestamp
+			date1 = new Date(parseInt(dateStr, 10));
+		}
 		let date2 = Date.now();
 		if(!date1 || !date2) {
 			return;

@@ -47,6 +47,6 @@
 
 		<script webc:type="js">`<!-- Build timestamp: ${Date.now()} -->`</script>
 
-		<script type="module" webc:keep @raw="getBundle('js')"></script>
+		<script type="module" webc:keep :src="getBundleFileUrl('js')"></script>
 	</body>
 </html>

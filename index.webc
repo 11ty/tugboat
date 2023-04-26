@@ -22,11 +22,6 @@ let layout = "layouts/base.webc";
 
 <h2>Demos</h2>
 
-<h3>Markdown</h3>
-<template webc:type="11ty" 11ty:type="md">
-# Heading
-</template>
-
 <h3>Fancy Links</h3>
 
 <p>Use the <code>favicon-link</code> component to easily show a link with a favicon image shown alongside the content.</p>

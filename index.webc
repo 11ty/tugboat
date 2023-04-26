@@ -1,7 +1,7 @@
 ---javascript
 let layout = "layouts/base.webc";
 ---
-<h1>Welcome to Tugboat.</h1>
+<h1>Welcome to Tugboat <accessible-emoji emoji="🛟"></accessible-emoji></h1>
 
 <p @text="pkg.description"></p>
 
@@ -10,26 +10,43 @@ let layout = "layouts/base.webc";
 <p>Bundled WebC components:</p>
 
 <ul>
+	<li><accessible-emoji emoji="🏝"></accessible-emoji> <code>is-land</code> <em>(client-JavaScript)</em> to use Islands architecture to control how components load and initialize (using <a href="https://www.11ty.dev/docs/plugins/partial-hydration/"><code>@11ty/is-land</code></a>)</li>
+	<li><accessible-emoji emoji="🖼"></accessible-emoji> <code>eleventy-image</code> for easy, pre-configured, fast build-time image optimization using <a href="https://www.11ty.dev/docs/plugins/image/"><code>@11ty/eleventy-img</code></a>.</li>
+	<li><accessible-emoji emoji="🌌"></accessible-emoji> <code>color-schemer</code> for zero-added-specificity dark/light mode support.</li>
 	<li><accessible-emoji emoji="🗣"></accessible-emoji> <code>visually-hidden</code> to hide content but keep it <a href="https://www.a11yproject.com/posts/how-to-hide-content/">accessible to screen readers</a>.</li>
 	<li><accessible-emoji emoji="💾"></accessible-emoji> <code>pre</code> for syntax highlighting using <a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/"><code>@11ty/eleventy-plugin-syntaxhighlight</code></a>.</li>
-	<li><accessible-emoji emoji="🖼"></accessible-emoji> <code>eleventy-image</code> for easy, pre-configured, fast build-time image optimization using <a href="https://www.11ty.dev/docs/plugins/image/"><code>@11ty/eleventy-img</code></a>.</li>
 	<li><accessible-emoji emoji="🔗"></accessible-emoji> <code>favicon-link</code> will show a favicon image in an external link.</li>
-	<li><accessible-emoji emoji="🏝"></accessible-emoji> <code>is-land</code> <em>(client-JavaScript)</em> to use Islands architecture to control how components load and initialize (using <a href="https://www.11ty.dev/docs/plugins/partial-hydration/"><code>@11ty/is-land</code></a>)</li>
 	<li><accessible-emoji emoji="⏲"></accessible-emoji> <code>time-difference</code> <em>(client-JavaScript)</em> to show human readable time differences for visitor-localized time zones.</li>
 	<li><accessible-emoji emoji="🎭"></accessible-emoji> <code>accessible-emoji</code> to show screen-reader friendly emoji.</li>
 </ul>
 
 <h2>Demos</h2>
 
+<h3>Markdown</h3>
+<template webc:type="11ty" 11ty:type="md">
+# Heading
+</template>
+
 <h3>Fancy Links</h3>
 
 <p>Use the <code>favicon-link</code> component to easily show a link with a favicon image shown alongside the content.</p>
 
 <live-demo>
+<a webc:is="favicon-link" href="https://www.11ty.dev/">Eleventy</a>
 <a webc:is="favicon-link" href="https://zachleat.com/">Zach Leatherman</a>
 <a webc:is="favicon-link" href="https://mxb.dev/">Max Böck</a>
 <a webc:is="favicon-link" href="https://sia.codes/">Sia Karamalegos</a>
 <a webc:is="favicon-link" href="https://jennschiffer.com/">Jenn Schiffer</a>
+<a webc:is="favicon-link" href="https://ryanmulligan.dev/">Ryan Mulligan</a>
+<a webc:is="favicon-link" href="https://samtan.dev/">Sam Tancharoensuksavai</a>
+<a webc:is="favicon-link" href="https://georgefrancis.dev/">George Francis</a>
+<a webc:is="favicon-link" href="https://www.sarasoueidan.com/">Sara Soueidan</a>
+</live-demo>
+
+<h3>Dark/Light Mode</h3>
+
+<live-demo>
+	<color-schemer></color-schemer>
 </live-demo>
 
 <h3>Time Difference</h3>

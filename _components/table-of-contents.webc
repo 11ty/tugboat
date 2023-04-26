@@ -83,7 +83,7 @@ generateHtml(headings);
 					}
 				}
 			}, {
-				rootMargin: "0px 0px -35% 0px",
+				rootMargin: "0px 0px -90% 0px",
 				threshold: 1,
 			});
 

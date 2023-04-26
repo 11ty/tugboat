@@ -8,33 +8,58 @@
 :host select[disabled] {
 	cursor: not-allowed;
 }
-</style>
-<script webc:bucket="head">
-let theme = sessionStorage.getItem("theme");
-if(theme) {
-	document.documentElement.classList.add(`theme-${theme}`);
+:host-context(.theme-dark) select {
+	border-color: rgba(255,255,255,.3);
 }
-</script>
+</style>
+
 <form>
 	<label>
 		<select disabled>
-			<option value="" selected>System</option>
+			<option value="">System</option>
 			<option value="dark">Dark Theme</option>
-			<option value="light">Light Theme</option>
+			<option value="light" selected>Light Theme</option>
 		</select>
 	</label>
 </form>
+
+<script webc:bucket="head">
+(function() {
+	let root = document.documentElement;
+	let query = window.matchMedia("(prefers-color-scheme: dark)");
+	query.addEventListener("change", function (e) {
+		if(e.matches) {
+			root.classList.add("theme-dark");
+		} else {
+			root.classList.remove("theme-dark");
+		}
+	});
+
+	let theme = sessionStorage.getItem("theme");
+	if(query?.matches || theme) {
+		root.classList.add(`theme-${theme || 'dark'}`);
+	}
+})();
+</script>
+
 <script>
+let selectCache = new Set();
+
 class ColorSchemer extends HTMLElement {
+	disconnectedCallback() {
+		selectCache.delete(this.select);
+	}
+
 	connectedCallback() {
 		this.select = this.querySelector("select");
 		if(this.select) {
+			selectCache.add(this.select);
+
 			this.select.removeAttribute("disabled");
 
 			let saved = sessionStorage.getItem("theme");
-			if(saved) {
-				this.select.value = saved;
-			}
+
+			this.select.value = saved || "";
 
 			this.select.addEventListener("input", function() {
 				let el = document.documentElement;
@@ -46,6 +71,13 @@ class ColorSchemer extends HTMLElement {
 					sessionStorage.setItem("theme", theme);
 				} else {
 					sessionStorage.removeItem("theme");
+				}
+
+				// Sync
+				for(let select of selectCache) {
+					if(select && select !== this) {
+						select.value = theme;
+					}
 				}
 			})
 		}

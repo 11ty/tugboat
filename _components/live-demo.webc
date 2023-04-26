@@ -8,10 +8,8 @@
 	margin-bottom: 1em;
 	overflow: hidden;
 }
-@media (prefers-color-scheme: dark) {
-	:host {
-		--theme-demo-bg: lightblue;
-	}
+:host-context(.theme-dark) {
+	--theme-demo-bg: lightblue;
 }
 :host > .content {
 	padding: 1rem;
@@ -55,11 +53,9 @@
 	--theme-demo-bg: lightblue;
 	--theme-demo-fg: #222;
 }
-@media (prefers-color-scheme: dark) {
-	:host:not(:has(is-land)),
-	:host:has(is-land[ready]) {
-		--theme-demo-bg: #aaaaf5;
-	}
+:host-context(.theme-dark):not(:has(is-land)),
+:host-context(.theme-dark):has(is-land[ready]) {
+	--theme-demo-bg: #aaaaf5;
 }
 </style>
 <!--- Unscoped CSS --->

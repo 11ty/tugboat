@@ -7,26 +7,13 @@
 	--text-color-link-visited: #17050F;
 	color-scheme: light;
 }
-
-/* TODO use a tool to generate these to prevent author-time code duplication */
-:root.theme-dark {
+:root:where(.theme-dark) {
 	--background-color: #15202b;
 	--text-color: #dad8d8;
 	--text-color-link: #1493fb;
 	--text-color-link-active: #6969f7;
 	--text-color-link-visited: #a6a6f8;
 	color-scheme: dark;
-}
-/* System wants dark, make sure sure light mode is not selected */
-@media (prefers-color-scheme: dark) {
-	:root:not(.theme-light) {
-		--background-color: #15202b;
-		--text-color: #dad8d8;
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
-		color-scheme: dark;
-	}
 }
 
 /* Global stylesheet */
@@ -55,7 +42,7 @@ footer {
 @media (min-width: 48em) {
 	footer {
 		/* Extra padding for intersection observer */
-		margin-bottom: 30vh;
+		margin-bottom: 20vh;
 	}
 }
 :is(h1, h2, h3, h4):first-child {

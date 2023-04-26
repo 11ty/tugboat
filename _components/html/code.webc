@@ -7,13 +7,8 @@ code {
 	padding-right: .25em;
 	font-family: Roboto Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 }
-.theme-dark code {
+:where(.theme-dark) code {
 	background-color: #111;
-}
-@media (prefers-color-scheme: dark) {
-	:root:not(.theme-light) code {
-		background-color: #111;
-	}
 }
 </style><!---
 ---><script webc:type="js" webc:root webc:raw>

@@ -26,13 +26,8 @@ code[class*="language-"],
 pre[class*="language-"] {
 	overflow: auto;
 }
-.theme-dark code[class*="language-"] {
+:where(.theme-dark) code[class*="language-"] {
 	background-color: inherit;
-}
-@media (prefers-color-scheme: dark) {
-	:root:not(.theme-light) code[class*="language-"] {
-		background-color: inherit;
-	}
 }
 </style>
 <script webc:type="js" webc:root="override" webc:raw>

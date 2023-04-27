@@ -8,12 +8,15 @@ time-difference shows the relative time difference between a date and now.
 @param {integer} interval (in seconds)
 --->
 <script webc:setup>
+function dateToAttribute(date) {
+	return new Date(date).toISOString();
+}
 function readableDate(date, locale) {
 	return new Date(date).toLocaleString(locale || "en");
 }
 </script>
 
-<time :datetime="date" :title="readableDate(date)" @text="readableDate(date)"></time>
+<time :datetime="dateToAttribute(date)" :title="readableDate(date)" @text="readableDate(date)"></time>
 
 <style webc:scoped>
 :host {

@@ -1,5 +1,6 @@
 ---javascript
 let layout = "layouts/base.webc";
+// Hi
 ---
 <h1>Welcome to Tugboat <accessible-emoji emoji="🛟"></accessible-emoji></h1>
 

@@ -42,7 +42,7 @@ let layout = "layouts/base.webc";
 
 <live-demo>
 <color-schemer></color-schemer>
-<p>Note that this value is synchronized with the separate instance in the footer of this page.</p>
+<p>Note that this value is synchronized with all other color-schemer instances on the page (there’s another one in the footer).</p>
 </live-demo>
 
 <h3>Time Difference</h3>

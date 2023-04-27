@@ -1,0 +1,49 @@
+<!---
+copy-to-clipboard copies the text of the target element to the clipboard
+
+@param {string} container, selector of container element to search for <pre>
+--->
+<button type="button"><b>📋</b> Copy</button>
+<style webc:scoped>
+:host:not(:defined) {
+	display: none;
+}
+:host:defined {
+	display: inline-flex;
+}
+:host button {
+	border: none;
+	padding: 0;
+	font-size: 0.9375em; /* 15px /16 */
+	line-height: 1;
+}
+</style>
+<script>
+class CopyToClipboard extends HTMLElement {
+	connectedCallback() {
+		let containerSelector = this.getAttribute("container");
+		let container = containerSelector ? this.closest(containerSelector) : this.parentNode;
+		let target = container.querySelector(":scope pre");
+		let emoji = this.querySelector("b");
+		let btn = this.querySelector("button");
+		if(target) {
+			btn.addEventListener("click", () => {
+				navigator.clipboard.writeText(target.innerText).then(() => {
+					emoji.innerText = "✅";
+					setTimeout(() => {
+						emoji.innerText = "📋";
+					}, 1000)
+				}, () => {
+					emoji.innerText = "❗️";
+				});
+			});
+		} else {
+			btn.remove();
+		}
+	}
+}
+
+if(("customElements" in window) && ("clipboard" in navigator)) {
+	window.customElements.define("copy-to-clipboard", CopyToClipboard);
+}
+</script>

@@ -1,7 +1,7 @@
 <!---
 time-difference shows the relative time difference between a date and now.
 
-@param {string|integer} parseable date string or timestamp number
+@param {string|integer} date (parseable date string or timestamp number)
 @param {string} locale
 @param {("years"|"quarters"|"months"|"weeks"|"days"|"hours"|"minutes"|"seconds")} units
 @param {boolean} live

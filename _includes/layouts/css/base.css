@@ -55,6 +55,8 @@ button {
 	font-size: inherit;
 	background: inherit;
 	color: inherit;
+	border: 2px solid;
+	border-radius: 0.6em;
 }
 
 a[href] {

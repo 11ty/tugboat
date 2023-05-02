@@ -1,6 +1,10 @@
 .heading-link {
-	margin-left: .25em;
+	margin-left: -1.222222222222rem; /* -22px /18 */
 	font-size: 1.125rem; /* 18px /16 */
 	text-decoration: none;
-	padding: .1em .2em;
+	padding: .1em .2em .1em 0;
+}
+a.heading-link[href],
+a.heading-link[href]:visited {
+	color: var(--color-accent);
 }

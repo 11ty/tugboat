@@ -82,7 +82,7 @@ let layout = "layouts/base.webc";
 
 <h3>Image Optimization</h3>
 
-<p>A very large <code>1600×1200</code> source image has been downscaled to <code>400w</code> and <code>800w</code> output sizes in three separate image formats (<code>avif</code>, <code>webp</code>, and <code>jpeg</code>). The image component includes the <code>width</code> and <code>height</code> attributes to eliminate <a href="https://web.dev/cls/">Content Layout Shift</a> and decides whether the <code>picture</code> syntax is necessary and generates optimal markup using <code>srcset</code>.</p>
+<p>A very large <code>1600×1200</code> source image has been downscaled to <code>400w</code> and <code>800w</code> output sizes in three separate image formats (<code>avif</code>, <code>webp</code>, and <code>jpeg</code>). The image component includes the <code>width</code> and <code>height</code> attributes to eliminate <a href="https://web.dev/cls/">Content Layout Shift</a>, decides whether the <code>picture</code> syntax is necessary, and generates optimal markup using <code>srcset</code>.</p>
 
 <live-demo @wrap>
 <img webc:is="eleventy-image" width="400,800" sizes="100vw" src="img/sung-jin-cho-5dgq-7DySyE-unsplash.jpg" formats="avif,webp,jpeg" alt="A photo of a small blue and white tugboat next to a very large shipping container ship full of multi-colored shipping containers.">
@@ -116,7 +116,7 @@ let layout = "layouts/base.webc";
 </pre>
 </live-demo>
 
-<p>The <code>language</code> attribute is optional, and falls back to an unstyled code block.</p>
+<p>The <code>@language</code> <a href="https://www.11ty.dev/docs/languages/webc/#props-(properties)">prop</a> is optional, and falls back to an unstyled code block:</p>
 
 <live-demo>
 <pre>

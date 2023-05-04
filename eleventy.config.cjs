@@ -6,6 +6,7 @@ const {parseHTML} = require("linkedom");
 
 const pluginJavaScriptFrontMatter = require("./_config/javascriptFrontMatter.cjs");
 
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
 	eleventyConfig.ignores.add("./README.md");
 	eleventyConfig.addWatchTarget("./_components/**/*.css");

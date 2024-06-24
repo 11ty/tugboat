@@ -4,6 +4,7 @@ const { eleventyImagePlugin } = require("@11ty/eleventy-img");
 const emojiShortName = require("emoji-short-name");
 const {parseHTML} = require("linkedom");
 
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
 	eleventyConfig.ignores.add("./README.md");
 	eleventyConfig.addWatchTarget("./_components/**/*.css");

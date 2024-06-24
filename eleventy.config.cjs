@@ -4,15 +4,10 @@ const { eleventyImagePlugin } = require("@11ty/eleventy-img");
 const emojiShortName = require("emoji-short-name");
 const {parseHTML} = require("linkedom");
 
-const pluginJavaScriptFrontMatter = require("./_config/javascriptFrontMatter.cjs");
-
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
 	eleventyConfig.ignores.add("./README.md");
 	eleventyConfig.addWatchTarget("./_components/**/*.css");
-
-	// Adds `javascript` type for front matter
-	eleventyConfig.addPlugin(pluginJavaScriptFrontMatter);
 
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: {

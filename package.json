@@ -11,7 +11,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/11ty/eleventy-tugboat.git"
+		"url": "git://github.com/11ty/tugboat.git"
 	},
 	"author": {
 		"name": "Zach Leatherman",
@@ -27,9 +27,9 @@
 		"url": "https://opencollective.com/11ty"
 	},
 	"bugs": {
-		"url": "https://github.com/11ty/eleventy-tugboat/issues"
+		"url": "https://github.com/11ty/tugboat/issues"
 	},
-	"homepage": "https://github.com/11ty/eleventy-tugboat#readme",
+	"homepage": "https://github.com/11ty/tugboat#readme",
 	"devDependencies": {
 		"@11ty/eleventy": "3.0.0-alpha.1",
 		"@11ty/eleventy-img": "^3.1.8",

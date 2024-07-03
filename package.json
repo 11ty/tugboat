@@ -31,12 +31,12 @@
 	},
 	"homepage": "https://github.com/11ty/eleventy-tugboat#readme",
 	"devDependencies": {
-		"@11ty/eleventy": "3.0.0-alpha.1",
-		"@11ty/eleventy-img": "^3.1.8",
+		"@11ty/eleventy": "3.0.0-alpha.14",
+		"@11ty/eleventy-img": "^4.0.2",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11ty/eleventy-plugin-webc": "^0.11.2",
 		"emoji-short-name": "^2.0.0",
-		"linkedom": "^0.14.25"
+		"linkedom": "^0.18.4"
 	},
 	"dependencies": {
 		"@11ty/is-land": "^4.0.0"

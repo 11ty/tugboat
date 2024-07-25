@@ -31,7 +31,7 @@
 	},
 	"homepage": "https://github.com/11ty/eleventy-tugboat#readme",
 	"devDependencies": {
-		"@11ty/eleventy": "3.0.0-alpha.14",
+		"@11ty/eleventy": "3.0.0-alpha.17",
 		"@11ty/eleventy-img": "^4.0.2",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11ty/eleventy-plugin-webc": "^0.11.2",

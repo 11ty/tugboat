@@ -1,4 +1,4 @@
----node
+---js
 let layout = "layouts/base.webc";
 // Hi
 ---

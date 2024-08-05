@@ -1,8 +1,9 @@
----node
+---js
 let layout = "layouts/base.webc";
 // Hi
 ---
-<h1>Welcome to Tugboat <accessible-emoji emoji="🛟"></accessible-emoji></h1>
+<!--- Optionally override the Unicode emoji name with alt --->
+<h1>Welcome to Tugboat <accessible-emoji emoji="🛟" alt="life preserver"></accessible-emoji></h1>
 
 <p @text="pkg.description"></p>
 

@@ -1,12 +1,22 @@
 <style webc:scoped>
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
-:host {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-}
+/**
+ * Visually hide elements while allowing them to remain focusable
+ *
+ * Learn more: 
+ * - https://www.a11yproject.com/posts/how-to-hide-content/
+ * - https://blog.logrocket.com/design-accessibility-css-visually-hidden-class/
+ * - https://front-end.social/@joshwcomeau/112574609127860924
+ */
+	:host:not(:has(:is(a:active, a:focus))) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+	:host:has(:is(a:active, a:focus)) {
+		margin: var(--box-margin);
+	}
 </style>

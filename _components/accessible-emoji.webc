@@ -10,13 +10,21 @@
  * `⊛ ` into names, so filtering here.
  * https://github.com/WebReflection/emoji-essential/issues/1
  * 
+ * Newer emoji may not be in emoji-essential, so we need to be extra defensive
+ * 
  * Learn more: 
  * - https://kittygiraudel.com/2021/01/02/accessible-emojis-with-11ty/ 
  * - https://tink.uk/accessible-emoji/ 
  * - https://adrianroselli.com/2016/12/accessible-emoji-tweaked.html
  */
 let label = "";
-alt ? label = alt.toString() 
-	: label = emojiShortName(emoji).toString().replace("⊛ ", "");
+if (alt && typeof alt === 'string') {
+    label = alt;
+} else if (typeof emoji === 'string' && typeof alt === 'undefined') {
+    shortName = emojiShortName(emoji);
+    if (typeof shortName !== "undefined") {
+        label = shortName.replace("⊛ ", "");
+    }
+}
 `<span role="img" aria-label="${label}">${emoji}</span>`
 </script>

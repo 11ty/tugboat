@@ -16,7 +16,12 @@
 	white-space: nowrap;
 	width: 1px;
 }
+/**
+ * Optionally style active or focused links
+ */
+/* 
 :host:has(:is(a:active, a:focus)) {
-	margin: var(--box-margin);
+
 }
+*/
 </style>

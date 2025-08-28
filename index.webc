@@ -1,4 +1,4 @@
----node
+---js
 let layout = "layouts/base.webc";
 // Hi
 ---
@@ -85,7 +85,7 @@ let layout = "layouts/base.webc";
 <p>A very large <code>1600×1200</code> source image has been downscaled to <code>400w</code> and <code>800w</code> output sizes in three separate image formats (<code>avif</code>, <code>webp</code>, and <code>jpeg</code>). The image component includes the <code>width</code> and <code>height</code> attributes to eliminate <a href="https://web.dev/cls/">Content Layout Shift</a>, decides whether the <code>picture</code> syntax is necessary, and generates optimal markup using <code>srcset</code>.</p>
 
 <live-demo @wrap>
-<img webc:is="eleventy-image" width="400,800" sizes="100vw" src="img/sung-jin-cho-5dgq-7DySyE-unsplash.jpg" formats="avif,webp,jpeg" alt="A photo of a small blue and white tugboat next to a very large shipping container ship full of multi-colored shipping containers.">
+<img src="img/sung-jin-cho-5dgq-7DySyE-unsplash.jpg" eleventy:formats="avif,webp,jpeg" eleventy:width="400,800" alt="A photo of a small blue and white tugboat next to a very large shipping container ship full of multi-colored shipping containers." sizes="100vw">
 
 <p><em>Photo by <a href="https://unsplash.com/de/@mbuff?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sung Jin Cho</a> on <a href="https://unsplash.com/photos/5dgq-7DySyE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>.</em></p>
 </live-demo>
@@ -96,7 +96,7 @@ let layout = "layouts/base.webc";
 <p>Here’s some server-rendered (no client-JavaScript) syntax highlighted code:</p>
 
 <live-demo>
-<pre @language="html">
+<template webc:is="syntax-highlight" @language="html">
 <!doctype html>
 <html lang="en">
 	<head>
@@ -113,13 +113,13 @@ let layout = "layouts/base.webc";
 		</main>
 	</body>
 </html>
-</pre>
+</template>
 </live-demo>
 
 <p>The <code>@language</code> <a href="https://www.11ty.dev/docs/languages/webc/#props-(properties)">prop</a> is optional, and falls back to an unstyled code block:</p>
 
 <live-demo>
-<pre>
+<template webc:is="syntax-highlight">
 <!doctype html>
 <html lang="en">
 	<head>
@@ -136,7 +136,7 @@ let layout = "layouts/base.webc";
 		</main>
 	</body>
 </html>
-</pre>
+</template>
 </live-demo>
 
 <h3>Accessible Emoji</h3>

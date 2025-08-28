@@ -1,10 +1,10 @@
 <!doctype html>
-<html :lang="metadata.language">
+<html :lang="$data.metadata.language">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title @text="title || metadata.title"></title>
-		<meta name="description" :content="description || metadata.description">
+		<title @text="title || $data.metadata.title"></title>
+		<meta name="description" :content="description || $data.metadata.description">
 
 		<!--- Uncomment this if you’d like folks to know that you used Eleventy to build your site! --->
 		<!--- <meta name="generator" :content="eleventy.generator"> --->
@@ -23,7 +23,7 @@
 			<!--- sidebar --->
 			<div>
 				<header>
-					<page-logo @text="metadata.title"></page-logo>
+					<page-logo @text="$data.metadata.title"></page-logo>
 					<page-navigation></page-navigation>
 				</header>
 
@@ -38,14 +38,16 @@
 
 				<page-layout-footer>
 					<color-schemer></color-schemer>
-					<a :href="metadata.repository + page.inputPath.slice(2)">Edit this page</a>
+					<a :href="$data.metadata.repository + page.inputPath.slice(2)">Edit this page</a>
 					<span @text="`©${(new Date()).getFullYear()}`"></span>
 					<span>Built with <a href="https://www.11ty.dev/">Eleventy v<span @text="eleventy.version" webc:nokeep></span></a></span>
 				</page-layout-footer>
 			</div>
 		</page-layout-sidebar>
 
-		<script webc:type="js">`<!-- Build timestamp: ${Date.now()} -->`</script>
+		<script webc:type="js">
+		export default `<!-- Build timestamp: ${Date.now()} -->`;
+		</script>
 
 		<script type="module" webc:keep :src="getBundleFileUrl('js')"></script>
 	</body>

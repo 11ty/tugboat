@@ -5,7 +5,7 @@ table-of-contents finds the anchor links in the content to create a table of con
 function getLevel(el) {
 	return parseInt(el.tagName.slice(1), 10);
 }
-function generateHtml(headings) {
+export function generateHtml(headings) {
 	let html = [];
 	let previousLevel = 2;
 	for(let el of headings) {
@@ -57,9 +57,10 @@ function generateHtml(headings) {
 }
 </style>
 <script webc:type="js">
-// selectFromHtml via linkedom in eleventy.config.cjs
-let headings = selectFromHtml(content, ":is(h2, h3, h4, h5, h6)[id]" );
-generateHtml(headings);
+export default function({ content, selectFromHtml, generateHtml }) {
+	let headings = selectFromHtml(content, ":is(h2, h3, h4, h5, h6)[id]" );
+	return generateHtml(headings);
+}
 </script>
 
 <script>

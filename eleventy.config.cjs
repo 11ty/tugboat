@@ -1,6 +1,7 @@
 const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const { eleventyImagePlugin } = require("@11ty/eleventy-img");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+
 const emojiShortName = require("emoji-short-name");
 const {parseHTML} = require("linkedom");
 
@@ -18,12 +19,11 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginWebc, {
 		components: [
 			"./_components/**/*.webc",
-			"npm:@11ty/eleventy-img/*.webc",
 			"npm:@11ty/is-land/*.webc"
 		]
 	});
 
-	eleventyConfig.addPlugin(eleventyImagePlugin, {
+	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		formats: ["webp", "jpeg"],
 		urlPath: "/img/",
 

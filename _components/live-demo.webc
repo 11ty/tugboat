@@ -14,6 +14,9 @@
 :host > .content {
 	padding: 1rem;
 }
+:host > .content:has(> pre) {
+	padding: 0;
+}
 :host > .content > p:first-child {
 	margin-top: 0;
 }
@@ -73,6 +76,8 @@ is-land[ready] .demo-predefined-only {
 	<summary class="hed">View Source</summary>
 	<copy-to-clipboard></copy-to-clipboard>
 	<script webc:type="js">
-	`<pre @language="html" @content="${webc.escapeAttribute(slots.text.default)}"></pre>`
+	export default function({ webc, slots }) {
+		return `<syntax-highlight @language="html">${webc.escapeText(slots.text.default)}</pre>`
+	}
 	</script>
 </details>

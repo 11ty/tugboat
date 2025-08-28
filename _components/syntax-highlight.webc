@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../node_modules/prismjs/themes/prism-tomorrow.css">
+<link rel="stylesheet" href="../node_modules/prismjs/themes/prism-tomorrow.css">
 <style>
 pre:only-child {
 	margin: 0;
@@ -22,6 +22,9 @@ pre[class*="language-"] {
 	background-color: rgba(0,0,0,.9);
 	max-width: 100%;
 }
+pre:not([class*="language-"]) {
+	padding: 1em;
+}
 code[class*="language-"],
 pre[class*="language-"] {
 	overflow: auto;
@@ -31,13 +34,16 @@ pre[class*="language-"] {
 }
 </style>
 <script webc:type="js" webc:root="override" webc:raw>
-if(!content) {
-	content = slots.text.default.trim() || "";
-}
-if(!language) {
-	`<pre${webc.renderAttributes(webc.attributes)}>${webc.escapeText(content)}</pre>`;
-} else {
-	// Uses the `highlight` global shortcode from @11ty/eleventy-plugin-syntaxhighlight
-	helpers.highlight(language, content);
-}
+export default function({ content, slots, webc, language, helpers }) {
+	if(!content) {
+		content = slots.text.default.trim() || "";
+	}
+
+	if(!language) {
+		return `<pre${webc.renderAttributes(webc.attributes)}>${webc.escapeText(content)}</pre>`;
+	} else {
+		// Uses the `highlight` global shortcode from @11ty/eleventy-plugin-syntaxhighlight
+		return helpers.highlight(language, content);
+	}
+};
 </script>

@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="heading.css">
 <script webc:type="js" webc:root="override">
-let slug = slugify(slots.text.default);
-`<h3 id="${slug}">
+export default function({ slugify, slots }) {
+	let slug = slugify(slots.text.default);
+	return `<h3 id="${slug}">
 	<a href="#${slug}" class="heading-link"><span aria-hidden="true">#</span><visually-hidden>anchor</visually-hidden></a>
 	${slots.text.default}
-</h3>`
+</h3>`;
+};
 </script>

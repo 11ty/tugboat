@@ -12,14 +12,19 @@ let layout = "layouts/base.webc";
 
 <ul>
 	<li><accessible-emoji emoji="🏝"></accessible-emoji> <code>is-land</code> <em>(client-JavaScript)</em> to use Islands architecture to control how components load and initialize (using <a href="https://www.11ty.dev/docs/plugins/partial-hydration/"><code>@11ty/is-land</code></a>)</li>
-	<li><accessible-emoji emoji="🖼"></accessible-emoji> <code>eleventy-image</code> for easy, pre-configured, fast build-time image optimization using <a href="https://www.11ty.dev/docs/plugins/image/"><code>@11ty/eleventy-img</code></a>.</li>
 	<li><accessible-emoji emoji="🌌"></accessible-emoji> <code>color-schemer</code> for zero-added-specificity dark/light mode support.</li>
 	<li><accessible-emoji emoji="🗣"></accessible-emoji> <code>visually-hidden</code> to hide content but keep it <a href="https://www.a11yproject.com/posts/how-to-hide-content/">accessible to screen readers</a>.</li>
-	<li><accessible-emoji emoji="💾"></accessible-emoji> <code>pre</code> for syntax highlighting using <a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/"><code>@11ty/eleventy-plugin-syntaxhighlight</code></a>.</li>
+	<li><accessible-emoji emoji="💾"></accessible-emoji> <code>syntax-highlight</code> for syntax highlighting (using <a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/"><code>@11ty/eleventy-plugin-syntaxhighlight</code></a>).</li>
 	<li><accessible-emoji emoji="🔗"></accessible-emoji> <code>favicon-link</code> will show a favicon image in an external link.</li>
 	<li><accessible-emoji emoji="⏰"></accessible-emoji> <code>time-difference</code> <em>(client-JavaScript)</em> to show human readable time differences for visitor-localized time zones.</li>
 	<li><accessible-emoji emoji="🎭"></accessible-emoji> <code>accessible-emoji</code> to show screen-reader friendly emoji.</li>
 	<li><accessible-emoji emoji="🎪"></accessible-emoji> <code>live-demo</code> will both render a block of code and show the server-rendered code, syntax highlighted with a copy to clipboard button.</li>
+</ul>
+
+<p>Other features:</p>
+
+<ul>
+	<li><accessible-emoji emoji="🖼"></accessible-emoji> Images are build-time optimized using the <a href="https://www.11ty.dev/docs/plugins/image/">Eleventy Image</a> utility.</li>
 </ul>
 
 <h2>Demos</h2>

@@ -15,10 +15,11 @@
 
 <form>
 	<label>
+		Theme
 		<select disabled>
 			<option value="">System</option>
-			<option value="dark">Dark Theme</option>
-			<option value="light" selected>Light Theme</option>
+			<option value="dark">Dark</option>
+			<option value="light" selected>Light</option>
 		</select>
 	</label>
 </form>

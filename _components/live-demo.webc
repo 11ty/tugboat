@@ -17,6 +17,10 @@
 :host > .content:has(> pre) {
 	padding: 0;
 }
+:host > .content pre[class*="language-"] {
+	border-end-start-radius: 0;
+	border-end-end-radius: 0;
+}
 :host > .content > p:first-child {
 	margin-top: 0;
 }

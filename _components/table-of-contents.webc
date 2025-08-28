@@ -64,42 +64,81 @@ export default function({ content, selectFromHtml, generateHtml }) {
 </script>
 
 <script>
-	class TableOfContents extends HTMLElement {
-		static ACTIVE = "active";
+class TableOfContents extends HTMLElement {
+	static SELECTOR = ":is(h2, h3, h4, h5, h6)[id]";
+	static ACTIVE_CLASS = "active";
 
-		observe(targetsSelector) {
-			let observer = new IntersectionObserver((entries) => {
-				for (let entry of entries) {
+	static findHeading(element) {
+		while(element) {
+			if(element.matches(TableOfContents.SELECTOR)) {
+				return element;
+			}
+			element = element.previousElementSibling;
+		}
+	}
+
+	static getSiblingsForHeading(heading) {
+		let nodes = [];
+		let sibling = heading;
+		while(sibling = sibling.nextElementSibling) {
+			if(sibling.matches(TableOfContents.SELECTOR)) {
+				break;
+			}
+
+			nodes.push(sibling);
+		}
+		return nodes;
+	}
+
+	constructor() {
+		super();
+		this.state = {};
+	}
+
+	target(targetsSelector) {
+		let observer = new IntersectionObserver((entries) => {
+			let state = this.state;
+			for (let entry of entries) {
+				let heading = TableOfContents.findHeading(entry.target);
+				if(heading) {
+					let id = heading.getAttribute("id");
+					if(!(id in state)) {
+						state[id] = 0;
+					}
 					if(entry.isIntersecting) {
-						let id = entry.target.getAttribute("id");
-						let tocHeading = this.querySelector(`a[href="#${id}"]`);
-						if(tocHeading) {
-							let previousHeading = this.querySelector(`.${TableOfContents.ACTIVE}`);
-							if(previousHeading) {
-								previousHeading.classList.remove(TableOfContents.ACTIVE);
-							}
-							tocHeading.classList.add(TableOfContents.ACTIVE);
-						}
-						break;
+						state[id]++;
+					} else if(state[id] > 0) {
+						state[id]--;
 					}
 				}
-			}, {
-				rootMargin: "0px 0px -90% 0px",
-				threshold: 1,
-			});
+			}
+			
+			for(let id in state) {
+				let tocHeading = this.querySelector(`a[href="#${id}"]`);
+				tocHeading?.classList[state[id] > 0 ? "add" : "remove"](TableOfContents.ACTIVE_CLASS);
+			}
+		}, {
+			// rootMargin: "0px 0px -90% 0px",
+			// threshold: .01,
+		});
 
-			let headings = document.querySelectorAll(targetsSelector);
-			for(let heading of headings) {
-				observer.observe(heading);
+		let headings = document.querySelectorAll(targetsSelector);
+		for(let heading of headings) {
+			observer.observe(heading);
+
+			for(let sibling of TableOfContents.getSiblingsForHeading(heading)) {
+				observer.observe(sibling);
 			}
 		}
-
-		connectedCallback() {
-			this.observe(":is(h2, h3, h4, h5, h6)[id]")
-		}
 	}
 
-	if(("customElements" in window)) {
-		window.customElements.define("table-of-contents", TableOfContents);
+	connectedCallback() {
+		// Improve by using sibling elements between 
+		this.target(TableOfContents.SELECTOR)
 	}
-	</script>
+}
+
+if(("customElements" in window)) {
+	window.customElements.define("table-of-contents", TableOfContents);
+}
+</script>

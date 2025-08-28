@@ -19,7 +19,7 @@ let layout = "layouts/base.webc";
 	<li><accessible-emoji emoji="⏰"></accessible-emoji> <code>time-difference</code> <em>(client-JavaScript)</em> to show human readable time differences for visitor-localized time zones.</li>
 	<li><accessible-emoji emoji="🎭"></accessible-emoji> <code>accessible-emoji</code> to show screen-reader friendly emoji.</li>
 	<li><accessible-emoji emoji="🎪"></accessible-emoji> <code>live-demo</code> will both render a block of code and show the server-rendered code, syntax highlighted with a copy to clipboard button.</li>
-	<li><accessible-emoji emoji="📋"></accessible-emoji> <code>table-of-contents</code> creates a list of anchor links to point to headings in the document to create a table of contents (shown in the sidebar, with active visible state).</li>
+	<li><accessible-emoji emoji="📋"></accessible-emoji> <code>table-of-contents</code> <em>(client-JavaScript)</em> creates a list of anchor links to point to headings in the document to create a table of contents (shown in the sidebar, with active visible state).</li>
 </ul>
 
 <p>Other features:</p>
